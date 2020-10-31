@@ -1,0 +1,90 @@
+@media screen and (max-width: 300px) {
+    .container p {
+    font-size:15rem;
+    }
+}
+    
+@media screen and (max-width: 400px) {
+    .container h1 {
+    font-size:30rem;
+    }
+    .container p {
+    font-size:14rem;
+    }
+}
+/*contact us*/
+
+.form-group{
+    border-bottom: 1px solid rgb(224, 219, 219);
+}
+
+#btn1{
+    background-color: rgb(148, 26, 148);
+    color: white;
+}
+#header{
+    background-color: rgb(148, 26, 148);
+    color: white;
+    z-index: 2;
+}
+.contact{
+    background-image: url(../img/poto4.jpg);
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 150% 150%;
+    background-repeat: no-repeat;
+    
+}
+/*Dashboard-admin*/
+.left, .icon1, .nav-item{
+    color: white;
+}
+.nav-link:hover{
+    background-color: rgb(121, 179, 156);
+}
+.navadmin, .mynav{
+    background-color: rgb(32, 204, 167);
+}
+#nav{
+    margin-left: 50px;
+}
+.search{
+    outline: none;
+}
+.card-body-icon{
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+    left: 95px;
+    opacity: 0.5;
+    font-size: 110px;
+}
+.icon{
+    margin-left: 20px;
+}
+
+.cal{
+    background-image: url(../img/poto6.jpg);
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    border-radius: 10px;
+    box-sizing: content-box;
+    box-shadow: 4px;
+    width: 18rem; 
+    
+}
+.right-tanggal{
+    width: 18rem; 
+    height: 10rem;
+}
+.card-kanan{
+    width: 18em;
+    border-radius: 8px;
+}
+.bg{
+    background-color: coral;
+}
+/*baruuuuuu*/
