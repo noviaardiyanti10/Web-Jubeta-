@@ -1,0 +1,68 @@
+<!DOCTYPE html lang = "en">
+<html>
+    <head>
+        <title>Registrasi</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="assets/style2.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    </head>
+
+    <body class="regis">
+        <div class="card">
+            <form action="login.html" method="POST">
+                <strong><h4>Registrasi Jubeta</h4></strong>
+                <hr align="left" color="rgb(0, 0, 0)" style="width: 0px;"/>
+               
+                <div class="form-group">
+                    <label for="username">Username</label><br/>
+                   <input type="text" name="username" id="username" placeholder="Masukkan username Anda" required autofocus/>
+                </div>
+
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label><br/>
+                   <input type="text" name="nama" id="nama" placeholder="Masukkan nama Anda" required autofocus/>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label><br/>
+                    <input type="email" name="email" id="email" placeholder="Masukkan email Anda" required/>
+                </div>
+                
+                <div class="form-group">
+                    <label for="alamat">Alamat</label><br/>
+                    <input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat Anda" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="telepon">Telepon</label><br/>
+                    <input type="tel" name="telepon" id="telepon" placeholder="Telepon Anda" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="pass">Password</label><br/>
+                    <input type="password" name="pass" id="pass" placeholder="Password" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="konpass">Konfirmasi Password</label><br/>
+                    <input type="password" name="konpass" id="pass" placeholder="Konfirmasi Password" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="file">Foto KTP</label><br/>
+                    <input type="file" id="file" name="file" />
+                </div>
+
+            
+                <button type="submit">Registrasi</button><br/>
+                <p>Anda sudah punya akun? <a href="login.html">Login.</a></p>
+            
+            </form>
+    </body>
+</html>
