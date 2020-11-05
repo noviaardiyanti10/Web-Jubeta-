@@ -110,6 +110,9 @@ td, th {
 table {
     width: 1100px !important;
   }
+#OrderBg{
+    background: linear-gradient(rgb(195, 197, 85),rgb(141, 190, 202),rgb(124, 212, 146))
+}
  /*update order */
  .upod{
      width: 100%;
@@ -118,8 +121,8 @@ table {
      margin-top: 95px;
      padding-top: 10px;
  } 
-.headOrder{
-    margin-top: 80px;
+#headOrder{
+    margin-top: 130px;
 }
  .form-update{
      width: 100%;
@@ -142,9 +145,74 @@ table {
  }
  /*Produk List*/
 #addProd{
-    margin-left: 53%;
+    margin-left: 50%;
 }
-/*User ;ist */
+.ProdukBg{
+    background: linear-gradient(rgb(168, 235, 235),rgb(144, 202, 209), rgb(166, 140, 190)) ;
+}
+/*User list */
 #userList{
     margin-left: 40%;
+}
+.UserBg{
+    background-image: url(../img/3860709.jpg);
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+/*Update Produk*/
+.headProduk{
+    margin-top: 95px;
+}
+.cardProduk{
+    margin-top: 100px;
+    margin-left: 15%;
+}
+#ProdukButton{
+    margin-left: 46%;
+}
+#h3Update{
+    background-color: rgb(24, 116, 116);
+    color: white;
+}
+.UpdateProd{
+    background-image: url("../img/22133.jpg");
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+/*Entry Produk*/
+#EntryHead{
+    background-color: rgb(162, 118, 204);
+    color: white;
+}
+.EntryBg{
+    background-image: url("../img/186.jpg");
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+/*PROFIL ADMIN */
+.profil-admin{
+    margin-top: 130px;
+    margin-left: 190px;
+    width: 100%;
+    max-width: 1000px;
+}
+.btn-padmin{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 28%;
+}
+.data-admin{
+    background-color: rgb(80, 170, 166);
+}
+.admin-bg{
+    background-color: linen;
 }
