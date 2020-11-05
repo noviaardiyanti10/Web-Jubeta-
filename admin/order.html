@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <title>Orders</title>
 </head>
-<body>
+<body  id="OrderBg">
 
   <!--Layout-->
 <header>
@@ -21,7 +21,7 @@
         <img src="../img/logo (2).png" width="50" height="50" alt="logo">
       </a>
         <li class="nav-item  mt-2">
-          <a class="nav-link text-white" href="../admin/dasboard-admin.html"><i class="fa fa-home d-inline-block align-top mt-1 mr-2 fa-lg"></i>HOME</a>
+          <a class="nav-link active  text-white" href="../admin/dasboard-admin.html"><i class="fa fa-home d-inline-block align-top mt-1 mr-2 fa-lg"></i>HOME</a>
         </li>
         <li class="nav-item  mt-2">
           <a class="nav-link  text-white" href="../admin/order.html"><i class="fa fa-shopping-basket d-inline-block align-top mt-1 mr-2"></i>ORDER</a>
@@ -32,8 +32,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="../admin/produk-list.html">Produk</a>
-            <a class="dropdown-item" href=".#">New Produk</a>
-            <a class="dropdown-item" href=".#">Update Produk</a>
+            <a class="dropdown-item" href="../admin/entry-produk.html">New Produk</a>
             <a class="dropdown-item" href="../admin/user-list.html">List User</a>
             <div class="dropdown-divider"></div>
           </div>
@@ -45,14 +44,14 @@
           <h6 class="font-weight-lighter mr-4 text-white"><img src="../img/admin.jpg" width="35" height="30" class="d-inline-block align-top img-circle mr-3" alt="admin">Administrator</h6>
         </a>
       </ul>
-  </nav>
+</nav>
 </header>
 <!--Body-->
-  <div class="container ml-5 bg-light content-order">
-        <form class="form-inline">
+  <div class="container ml-5 content-order p-3 shadow"  id="OrderBg">
+        <form class="form-inline text-white">
           <h3><i class="fa fa-shopping-basket d-inline-block align-top mr-2"></i>Order List</h3>
           <input class="form-control mr-sm-1 shadow-none" id="left" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-light" type="submit"><i class="fa fa-search fa-lg"></i></button>
+          <button class="btn btn-dark" type="submit"><i class="fa fa-search fa-lg"></i></button>
         </form>
        <div class="card mt-3">
         <table class="table table-striped table-fixed">
