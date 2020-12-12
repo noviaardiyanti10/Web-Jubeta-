@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2020 at 08:02 AM
+-- Generation Time: Dec 12, 2020 at 08:15 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -143,7 +143,9 @@ ALTER TABLE `detail_user`
 -- Indexes for table `pesan`
 --
 ALTER TABLE `pesan`
-  ADD PRIMARY KEY (`id_pesan`);
+  ADD PRIMARY KEY (`id_pesan`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_produk` (`id_produk`);
 
 --
 -- Indexes for table `produk`
@@ -156,7 +158,7 @@ ALTER TABLE `produk`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `id_produk` (`id_pesan`);
+  ADD KEY `id_pesan` (`id_pesan`);
 
 --
 -- Indexes for table `user_jubeta`
@@ -207,6 +209,19 @@ ALTER TABLE `user_jubeta`
 --
 ALTER TABLE `detail_user`
   ADD CONSTRAINT `detail_user_ibfk_1` FOREIGN KEY (`id_pembeli`) REFERENCES `user_jubeta` (`id_user`);
+
+--
+-- Constraints for table `pesan`
+--
+ALTER TABLE `pesan`
+  ADD CONSTRAINT `pesan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user_jubeta` (`id_user`),
+  ADD CONSTRAINT `pesan_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`);
+
+--
+-- Constraints for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_pesan`) REFERENCES `pesan` (`id_pesan`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
