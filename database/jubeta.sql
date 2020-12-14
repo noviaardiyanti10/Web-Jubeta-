@@ -26,12 +26,21 @@ DELIMITER $$
 --
 -- Procedures
 --
+<<<<<<< HEAD
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_user` (IN `i_username` VARCHAR(100), IN `i_pass` VARCHAR(255), IN `i_tingkatan_user` VARCHAR(50), IN `i_nama` VARCHAR(30), IN `i_alamat` VARCHAR(50), IN `i_notelp` VARCHAR(50), IN `i_jenis_kelamin` VARCHAR(30), IN `i_tempat_lahir` VARCHAR(30), IN `i_tgl_lahir` DATE, IN `i_foto_user` VARCHAR(30), IN `i_ktp_selfie` VARCHAR(30), IN `i_foto_ktp` VARCHAR(30))  BEGIN
 	INSERT INTO user_jubeta (username, passwd, tingkatan_user) VALUES (i_username, i_pass, i_tingkatan_user);
 	insert into detail_user (id_pembeli, foto_user, nama, tempat_lahir, tgl_lahir, alamat, no_telp, jenis_kelamin, ktp_selfie, foto_ktp) VALUES (LAST_INSERT_ID(), i_foto_user, i_nama, i_tempat_lahir, i_tgl_lahir, i_alamat, i_no_telp, i_jenis_kelamin, i_ktp_selfie, i_foto_ktp); 	
 
 	END$$
 
+=======
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_user` (IN `i_username` VARCHAR(100), IN `i_pass` VARCHAR(255), IN `i_tingkatan_user` VARCHAR(50), IN `i_nama` VARCHAR(30), IN `i_alamat` VARCHAR(50), IN `i_notelp` VARCHAR(50), IN `i_jenis_kelamin` VARCHAR(30), IN `i_tempat_lahir` VARCHAR(30), IN `i_tgl_lahir` DATE, IN `i_foto_user` VARCHAR(30), IN `i_ktp_selfie` VARCHAR(30), IN `i_foto_ktp` VARCHAR(30))  BEGIN
+	INSERT INTO user_jubeta (username, passwd, tingkatan_user) VALUES (i_username, i_pass, i_tingkatan_user);
+	insert into detail_user (id_pembeli, foto_user, nama, tempat_lahir, tgl_lahir, alamat, no_telp, jenis_kelamin, ktp_selfie, foto_ktp) VALUES (LAST_INSERT_ID(), i_foto_user, i_nama, i_tempat_lahir, i_tgl_lahir, i_alamat, i_no_telp, i_jenis_kelamin, i_ktp_selfie, i_foto_ktp); 	
+
+	END$$
+
+>>>>>>> 00b2e262567274acb8862b80b487c87ccfe7be79
 DELIMITER ;
 
 -- --------------------------------------------------------
@@ -128,6 +137,7 @@ CREATE TABLE `transaksi` (
   `produk_status` varchar(50) NOT NULL,
   `total_harga` int(11) DEFAULT NULL,
   `bukti_pembayaran` varchar(50) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -151,6 +161,31 @@ CREATE TABLE `user_jubeta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+=======
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `id_pesan`, `tgl_transaksi`, `metode_pembayaran`, `harga_antar`, `status`, `produk_status`, `total_harga`, `bukti_pembayaran`) VALUES
+(12, 2, '2020-06-08', 'Transfer', 72131, 'bayar', 'antar', 60000, '376-842-flawa.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_jubeta`
+--
+
+CREATE TABLE `user_jubeta` (
+  `id_user` int(11) NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `passwd` varchar(225) DEFAULT NULL,
+  `tingkatan_user` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+>>>>>>> 00b2e262567274acb8862b80b487c87ccfe7be79
 -- Dumping data for table `user_jubeta`
 --
 
