@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2020 at 08:15 AM
+-- Generation Time: Dec 14, 2020 at 08:55 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -44,7 +44,8 @@ CREATE TABLE `detail_user` (
   `id_detail_user` int(11) NOT NULL,
   `id_pembeli` int(11) NOT NULL,
   `foto_user` varchar(225) NOT NULL,
-  `nama` varchar(100) NOT NULL,
+  `nama` varchar(100) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
   `tempat_lahir` varchar(100) NOT NULL,
   `tgl_lahir` date DEFAULT NULL,
   `alamat` varchar(100) NOT NULL,
@@ -53,6 +54,13 @@ CREATE TABLE `detail_user` (
   `ktp_selfie` varchar(225) NOT NULL,
   `foto_ktp` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detail_user`
+--
+
+INSERT INTO `detail_user` (`id_detail_user`, `id_pembeli`, `foto_user`, `nama`, `email`, `tempat_lahir`, `tgl_lahir`, `alamat`, `no_telp`, `jenis_kelamin`, `ktp_selfie`, `foto_ktp`) VALUES
+(2, 1, 'adxsa', 'hemanda', 'dbshja', 'csa', '2020-12-01', 'cssas', 'csa', 'csacs', 'cs', 'cs');
 
 -- --------------------------------------------------------
 
@@ -68,6 +76,13 @@ CREATE TABLE `pesan` (
   `jam_order` time DEFAULT NULL,
   `jml_order` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pesan`
+--
+
+INSERT INTO `pesan` (`id_pesan`, `id_produk`, `id_user`, `tgl_order`, `jam_order`, `jml_order`) VALUES
+(2, 19, 1, '2020-12-01', '12:14:11', 1);
 
 -- --------------------------------------------------------
 
@@ -115,6 +130,13 @@ CREATE TABLE `transaksi` (
   `bukti_pembayaran` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `id_pesan`, `tgl_transaksi`, `metode_pembayaran`, `harga_antar`, `status`, `produk_status`, `total_harga`, `bukti_pembayaran`) VALUES
+(12, 2, '2020-06-08', 'Transfer', 72131, 'bayar', 'antar', 60000, '376-842-flawa.png');
+
 -- --------------------------------------------------------
 
 --
@@ -127,6 +149,16 @@ CREATE TABLE `user_jubeta` (
   `passwd` varchar(225) DEFAULT NULL,
   `tingkatan_user` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_jubeta`
+--
+
+INSERT INTO `user_jubeta` (`id_user`, `username`, `passwd`, `tingkatan_user`) VALUES
+(1, 'hemanda', '123456', 'user'),
+(2, 'salsa10', '567890', 'admin'),
+(5, 'ardiyantinovia', '827ccb0eea8a706c4c34a16891f84e7b', 'admin'),
+(6, 'w', '123', 'user');
 
 --
 -- Indexes for dumped tables
@@ -174,13 +206,13 @@ ALTER TABLE `user_jubeta`
 -- AUTO_INCREMENT for table `detail_user`
 --
 ALTER TABLE `detail_user`
-  MODIFY `id_detail_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detail_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pesan`
 --
 ALTER TABLE `pesan`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `produk`
@@ -192,13 +224,13 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_jubeta`
 --
 ALTER TABLE `user_jubeta`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
