@@ -13,7 +13,9 @@
     }
 }
 /*contact us*/
-
+#margin-left{
+    margin-left: 20%;
+}
 .form-kontak{
     border-bottom: 1px solid rgb(224, 219, 219);
 }
@@ -95,23 +97,28 @@
 #bell{
     margin-left: 650px;
 }
-thead{
-    display:block;
-  }
-tbody {
-    display:block;
-    overflow-y:scroll;
-    height:300px;
-    width: auto;
-  }
-td, th {
-    width: 1095px;
+.tableFixHead{ 
+    overflow-y: scroll; 
+    height: 300px;
 }
-table {
-    width: 1100px !important;
-  }
+.tableFixHead thead th{ 
+    position: sticky; top: -1px;
+ }
+
+table  { 
+    border-collapse: collapse; 
+    width: 100%; 
+}
+th, td { 
+    padding: 8px 16px; 
+}
+th{ 
+    background:#eee; 
+}
+
 #OrderBg{
-    background: linear-gradient(rgb(195, 197, 85),rgb(141, 190, 202),rgb(124, 212, 146))
+    background: linear-gradient(rgb(195, 197, 85),rgb(141, 190, 202),rgb(124, 212, 146));
+    background-repeat: no-repeat;
 }
  /*update order */
  .upod{
@@ -141,7 +148,12 @@ table {
      padding: 4px;
  }
  .order{
-     background: linear-gradient(rgb(123, 201, 197),rgb(192, 151, 196))
+     background: linear-gradient(rgb(123, 201, 197),rgb(192, 151, 196));
+     -webkit-background-size: 100% 100%;
+     -moz-background-size: 100% 100%;
+     -o-background-size: 100% 100%;
+     background-size: 100% 100%;
+     background-repeat: no-repeat;
  }
  /*Produk List*/
 #addProd{
@@ -155,7 +167,7 @@ table {
     margin-left: 40%;
 }
 .UserBg{
-    background-image: url(../img/3860709.jpg);
+    background-image: url(../img/baru.jpg);
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
     -o-background-size: 100% 100%;
@@ -164,7 +176,7 @@ table {
 }
 /*Update Produk*/
 .headProduk{
-    margin-top: 95px;
+    margin-top: 100px;
 }
 .cardProduk{
     margin-top: 100px;
@@ -215,4 +227,11 @@ table {
 }
 .admin-bg{
     background-color: linen;
+}
+
+.data-update{
+    margin-top: 5em;
+    margin-left: 17.5em;
+    margin-bottom: 3em;
+
 }
