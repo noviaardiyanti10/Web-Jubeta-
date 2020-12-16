@@ -1,6 +1,15 @@
 <?php
+include '../koneksi.php';
 require 'function-produk.php';
 
+if($_SESSION){
+    $username = $_SESSION["username"];
+    if($_SESSION["tingkatan_user"] == 'user'){
+        header("Location: ../home.php");
+    }
+}else{
+    header("Location: ../login.php");
+}
 $id_produk = $_GET['id_produk'];
 $data = query("SELECT * FROM produk WHERE id_produk = '$id_produk'")[0];
 

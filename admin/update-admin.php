@@ -1,6 +1,15 @@
 <?php
+include '../koneksi.php';
 require 'function-1.php';
 
+if($_SESSION){
+    $username = $_SESSION["username"];
+    if($_SESSION["tingkatan_user"] == 'user'){
+        header("Location: ../home.php");
+    }
+}else{
+    header("Location: ../login.php");
+}
 $id_user = $_GET['id_user'];
 $data = query("SELECT * FROM user_jubeta WHERE id_user = '$id_user'")[0];
 

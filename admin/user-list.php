@@ -1,5 +1,15 @@
 <?php
+include '../koneksi.php';
 require 'function-1.php';
+
+if($_SESSION){
+    $username = $_SESSION["username"];
+    if($_SESSION["tingkatan_user"] == 'user'){
+        header("Location: ../home.php");
+    }
+}else{
+    header("Location: ../login.php");
+}
 $result = mysqli_query($koneksi,"SELECT us.id_user, us.username, du.nama, du.email, du.alamat, du.no_telp, du.tempat_lahir, du.tgl_lahir, du.jenis_kelamin, du.foto_ktp, du.ktp_selfie FROM user_jubeta us LEFT JOIN detail_user du ON us.id_user = du.id_pembeli WHERE tingkatan_user = 'user';");
 
 if(isset($_POST['cari'])){

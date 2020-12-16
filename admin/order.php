@@ -1,5 +1,13 @@
 <?php
-
+include '../koneksi.php';
+if($_SESSION){
+  $username = $_SESSION["username"];
+    if($_SESSION["tingkatan_user"] == 'user'){
+        header("Location: ../home.php");
+    }
+}else{
+    header("Location: ../login.php");
+}
 require 'function-1.php';
 $result= mysqli_query($koneksi, "SELECT us.nama, od.id_pesan, od.tgl_order, od.jam_order, od.jml_order, tr.tgl_transaksi, tr.metode_pembayaran, tr.harga_antar, tr.total_harga, tr.status, tr.produk_status, tr.bukti_pembayaran 
                         FROM user_jubeta LEFT JOIN detail_user us ON id_user = us.id_pembeli

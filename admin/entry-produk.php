@@ -1,6 +1,15 @@
 <?php 
+include '../koneksi.php';
 require 'function-produk.php';
 
+if($_SESSION){
+    $username = $_SESSION["username"];
+    if($_SESSION["tingkatan_user"] == 'user'){
+        header("Location: ../home.php");
+    }
+}else{
+    header("Location: ../login.php");
+}
 if (isset($_POST['entry'])) {
     if (tambahProduk($_POST) > 0){
         echo "

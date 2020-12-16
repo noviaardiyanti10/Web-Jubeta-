@@ -17,12 +17,22 @@
                 <a class="dropdown-item" href="../admin/daftar-admin.php">Daftar Admin</a>
                 <div class="dropdown-divider"></div>
               </div>
+              
             </li>
-            <a class="navbar-brand mt-2" id="bell" href="#" >
-              <p class="text-white"><i class="fa fa-bell d-inline-block"></i></p>
-            </a>
+            <li class="nav-item  mt-2">
+            <?php if ($_SESSION) : ?>
+                <a class="nav-link js-scroll-trigger text-white" href="../logout.php">Logout</a>
+              <?php else : ?>
+                <a class="nav-link js-scroll-trigger text-white" href="../login.php">Login</a>
+              <?php endif ?>
+            </li>
+
             <a class="navbar-brand ml-auto  mt-2" href="#" >
-              <h6 class="font-weight-lighter mr-4 text-white"><img src="../img/admin.jpg" width="35" height="30" class="d-inline-block align-top img-circle mr-3" alt="admin">Administrator</h6>
+              <li >
+                <?php if ($_SESSION) : ?>
+                      <a class="nav-link js-scroll-trigger text-white" href="#">Selamat Datang, <?php echo $username; ?></a>
+                  <?php endif ?>
+                </li>
             </a>
           </ul>
     </nav>

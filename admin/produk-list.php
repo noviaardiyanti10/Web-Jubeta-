@@ -1,6 +1,15 @@
 <?php
+include '../koneksi.php';
 require 'function-produk.php';
 
+if($_SESSION){
+  $username = $_SESSION["username"];
+    if($_SESSION["tingkatan_user"] == 'user'){
+        header("Location: ../home.php");
+    }
+}else{
+    header("Location: ../login.php");
+}
 $result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY kode_produk DESC;");
 if(isset($_POST["cari"])){
   $result = cariProduk($_POST["kunci"]);

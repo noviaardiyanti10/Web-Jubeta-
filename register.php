@@ -13,7 +13,7 @@ if (isset($_POST['submit'])){
         echo "
                 <script>
                     alert('Registrasi gagal!');
-                    document.location.href = 'registrasi.php';
+                    document.location.href = 'register.php';
                 </script>
             ";
     }
@@ -114,7 +114,7 @@ if (isset($_POST['submit'])){
                     </div>
                 
                     <button class="btn text-white" name="submit" type="submit" id="btn-registrasi">Registrasi</button>
-                    <p class="text-center">Anda sudah punya akun? <a href="login.html">Login.</a></p>
+                    <p class="text-center">Anda sudah punya akun? <a href="login.php">Login.</a></p>
                 </form>
             </div>
         </div>

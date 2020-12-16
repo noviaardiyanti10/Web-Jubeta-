@@ -1,5 +1,15 @@
 <?php
+include '../koneksi.php';
 require 'function-1.php';
+
+if($_SESSION){
+  $username = $_SESSION["username"];;
+    if($_SESSION["tingkatan_user"] == 'user'){
+        header("Location: ../home.php");
+    }
+}else{
+    header("Location: ../login.php");
+}
 $result = mysqli_query($koneksi, "SELECT * FROM user_jubeta WHERE tingkatan_user = 'admin'");
 if(isset($_POST["cari"])){
   $result = cariAdmin($_POST["kunci"]);

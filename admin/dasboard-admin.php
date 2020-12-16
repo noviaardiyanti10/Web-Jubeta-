@@ -1,5 +1,17 @@
 <?php
+include '../koneksi.php';
 require 'function-1.php';
+
+
+if($_SESSION){
+    $username = $_SESSION["username"];
+    if($_SESSION["tingkatan_user"] == 'user'){
+        header("Location: ../home.php");
+    }
+}else{
+    header("Location: ../login.php");
+}
+
 $result = mysqli_query($koneksi, "SELECT COUNT(username) as jumlah_user FROM (user_jubeta) WHERE tingkatan_user = 'user';");
 $result = mysqli_fetch_array($result);
 
@@ -55,9 +67,12 @@ $last_entry = mysqli_fetch_array($last_entry);
               <li class="nav-item text-white">
                 <a class="nav-link text-white" href="mailto:putunovia546@gmail.com" target="blank" title="Email jubeta"><i class="fa fa-envelope mr-2"></i>Email</a>
               </li>
-
-              <li class="nav-item text-white">
-                <a class="nav-link text-white" href="#"><i class="fa fa-power-off mr-2"></i>Quit</a>
+              <li>
+                <?php if ($_SESSION) : ?>
+                  <a class="nav-link js-scroll-trigger text-white text-white" href="../logout.php">Logout</a>
+                <?php else : ?>
+                  <a class="nav-link js-scroll-trigger" href="../login.php">Login</a>
+                <?php endif ?>
               </li>
             </ul>
           </div>
@@ -68,7 +83,10 @@ $last_entry = mysqli_fetch_array($last_entry);
                   <b><a class="navbar-brand text-white">
                     <i class="fa fa-tachometer d-inline-block align-top mt-1 mr-2 fa-lg"></i>Dashboard</a></b>
                     <a class="navbar-brand ml-auto" href="#" >
-                      <h6 class="font-weight-lighter mr-5"><img src="../img/admin.jpg" width="35" height="30" class="d-inline-block align-top img-circle mr-3" alt="admin">Administrator</h6>
+                      <?php if ($_SESSION) : ?>
+                      <a class="nav-link js-scroll-trigger text-warning" href="#">Selamat Datang, <?php echo $username; ?></a>
+                      <?php endif ?>
+                    </h6> 
                     </a>
                 </nav>
               </div>
