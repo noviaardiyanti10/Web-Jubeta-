@@ -57,12 +57,12 @@ if (isset($_POST['update'])) {
         <form action="" method="post" enctype="multipart/form-data">
             <h3 class="text-center p-4  rounded" id="h3Update">Update Produk</h3>
             <input type="hidden" name="id_produk" class="form_control" required value="<?=$data['id_produk'];?>">
-            <div class= "row">
+            <!--<div class= "row">
                 <div class="col-md-4 form-group ml-5 mt-4">
                     <label for="kode_produk">Kode Produk</label>
                     <input type="text" name="kode_produk" id="kode_produk" class="form-control" required value="<?=$data['kode_produk'];?>">
                 </div>
-            </div>
+            </div>-->
 
             <div class= "row">
                 <div class="col-md-5 form-group ml-5">

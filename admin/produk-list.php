@@ -10,7 +10,7 @@ if($_SESSION){
 }else{
     header("Location: ../login.php");
 }
-$result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY kode_produk DESC;");
+$result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY id_produk DESC;");
 if(isset($_POST["cari"])){
   $result = cariProduk($_POST["kunci"]);
 }
@@ -52,7 +52,6 @@ if(isset($_POST["cari"])){
         <thead>
           <tr>
             <th>No</th>
-            <th>Kode Produk</th>
             <th>Nama Produk</th>
             <th>Merk</th>
             <th>Harga</th>
@@ -70,7 +69,6 @@ if(isset($_POST["cari"])){
           ?>
             <tr>
               <td><?php echo $no++;?></td>
-              <td><?php echo $row['kode_produk'];?></td>
               <td><?php echo $row['nama_produk'];?></td>
               <td><?php echo $row['merk'];?></td>
               <td><?php echo $row['harga_produk'];?></td>

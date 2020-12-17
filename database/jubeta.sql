@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2020 at 06:04 PM
+-- Generation Time: Dec 17, 2020 at 11:34 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -93,7 +93,6 @@ INSERT INTO `pesan` (`id_pesan`, `id_produk`, `id_user`, `tgl_order`, `jam_order
 
 CREATE TABLE `produk` (
   `id_produk` int(100) NOT NULL,
-  `kode_produk` varchar(100) NOT NULL,
   `nama_produk` varchar(100) DEFAULT NULL,
   `harga_produk` int(11) DEFAULT NULL,
   `stok` int(11) DEFAULT NULL,
@@ -106,14 +105,13 @@ CREATE TABLE `produk` (
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `kode_produk`, `nama_produk`, `harga_produk`, `stok`, `merk`, `deskripsi`, `foto`) VALUES
-(15, 'sa32e23', 'we', 32, 23, 'e23', 'Tiga kali', '376-842-flawa.png'),
-(16, 'U123', 'Motoran', 45000000, 12, 'Kawasaki', 'kfdmewf', '428-828-Screenshot (1).png'),
-(18, 'sa32e23', 'Motor SAMI', 4535, 3, 'rtetet', 'sadask', '536-679-123-flawa.png'),
-(19, 'asA', 'ADASD', 2, 2, 'WRWR', 'SFS', ''),
-(20, 'ASNDAJSK', 'WQNDQWK', 1212, 12, 'WRKLWERJWKR32', 'SFSDFS', '641-828-Screenshot (1).png'),
-(21, 'sa32e23', 'wqew', 12312, 23, 'wrww', '123123', '747-430-428-828-Screenshot (1).png'),
-(22, 'wrwer', 'wrew', 4324, 34, 'wrw', 'ere', '');
+INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `stok`, `merk`, `deskripsi`, `foto`) VALUES
+(15, 'we', 32, 23, 'e23', 'Tiga kali', '376-842-flawa.png'),
+(16, 'Motoran', 45000000, 12, 'Kawasaki', 'kfdmewf', '428-828-Screenshot (1).png'),
+(18, 'Motor SAMI', 4535, 3, 'rtetet', 'sadask', '536-679-123-flawa.png'),
+(19, 'ADASD', 2, 2, 'WRWR', 'SFS', ''),
+(20, 'WQNDQWK', 1212, 12, 'WRKLWERJWKR32', 'SFSDFS', '641-828-Screenshot (1).png'),
+(21, 'wqew', 12312, 23, 'wrww', '123123', '747-430-428-828-Screenshot (1).png');
 
 -- --------------------------------------------------------
 
@@ -220,7 +218,7 @@ ALTER TABLE `pesan`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_produk` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `transaksi`

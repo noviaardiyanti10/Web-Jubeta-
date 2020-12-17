@@ -51,12 +51,12 @@ if (isset($_POST['entry'])) {
           <div class="card w-75 justify-content-center shadow cardProduk rounded">
               <form action=" " method="post"  enctype="multipart/form-data">
                   <h2 class="text-center p-3 rounded" id="EntryHead">Entry Produk</h2>
-                  <div class= "row">
+                  <!--<div class= "row">
                       <div class="col-md-5 form-group ml-5">
                           <label for="kode_produk">Kode Produk</label>
                           <input type="text" name="kode_produk" id="kode_produk" class="form-control" required>
                       </div>
-                  </div>
+                  </div>-->
 
                   <div class= "row">
                       <div class="col-md-5 form-group ml-5">

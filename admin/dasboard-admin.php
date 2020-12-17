@@ -21,7 +21,7 @@ $orders = mysqli_fetch_array($orders);
 $produk = mysqli_query($koneksi, "SELECT COUNT(id_produk) as jumlah_produk FROM (produk);");
 $produk = mysqli_fetch_array($produk);
 
-$last_entry = mysqli_query($koneksi, "SELECT kode_produk as last_produk FROM produk ORDER BY id_produk DESC LIMIT 1;");
+$last_entry = mysqli_query($koneksi, "SELECT nama_produk as last_produk FROM produk ORDER BY id_produk DESC LIMIT 1;");
 $last_entry = mysqli_fetch_array($last_entry);
 ?>
 
