@@ -41,7 +41,7 @@ if($_SESSION){
                 <ul>
                     <li class="active"><a href="coba.html">Home</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="profil.php">Profile</a></li>
                     <li><a href="transaksi.html"> <i class="fa fa-shopping-cart"></i> </a></li>
                     <li class="drop-down"><a href=""> Hello </a>
                         <ul>
