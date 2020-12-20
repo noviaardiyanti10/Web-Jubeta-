@@ -87,7 +87,7 @@ if (isset($_POST['update'])) {
             <div class= "row">
                 <div class="col-md-5 form-group ml-5">
                     <label for="stokProduk">StokProduk</label>
-                    <input type="number" name="stokProduk" id="stokProduk" class="form-control" required value="<?=$data['stok'];?>">
+                    <input type="number" name="stokProduk" id="stokProduk" class="form-control" required value="<?=$data['quantity'];?>">
                 </div>
             </div>
             <div class= "row">

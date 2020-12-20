@@ -11,9 +11,9 @@ if($_SESSION){
     header("Location: ../login.php");
 }
 $id_pesan = $_GET['id_pesan'];
-$data = query("SELECT us.nama, od.id_pesan, od.tgl_order, od.jam_order, od.jml_order, tr.tgl_transaksi, tr.metode_pembayaran, tr.harga_antar, tr.total_harga, tr.status, tr.produk_status, tr.bukti_pembayaran 
+$data = query("SELECT us.nama, od.id_pesan, od.tgl_order, od.jam_order, od.quantity, tr.tgl_transaksi, tr.metode_pembayaran,tr.total_harga, tr.status,  tr.bukti_pembayaran 
                 FROM user_jubeta LEFT JOIN detail_user us ON id_user = us.id_pembeli
-                LEFT JOIN pesan od ON us.id_pembeli = od.id_user LEFT JOIN transaksi tr ON od.id_pesan = tr.id_transaksi WHERE od.id_pesan = '$id_pesan'")[0];
+                LEFT JOIN pesan od ON us.id_pembeli = od.id_user LEFT JOIN transaksi tr ON od.id_pesan = tr.id_pesan WHERE tr.id_pesan = '$id_pesan'")[0];
 
 if(isset($_POST['update'])){
     if(updateOrder($_POST) > 0){
@@ -92,15 +92,15 @@ if(isset($_POST['update'])){
 
                 <div class="row">
                     <div class="col-md-3 form-group">
-                        <label for="jml_order">Item</label>
-                        <input type="number" name="jml_order" id="jml_order" class="form-control" readonly value="<?=$data['jml_order'];?>"/>
+                        <label for="quantity">Quantity</label>
+                        <input type="number" name="quantity" id="quantity" class="form-control" readonly value="<?=$data['quantity'];?>"/>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="tgl_transaksi">Tanggal Transaksi</label>
-                        <input type="date" name="tgl_transaksi" id="tgl_transaksi" class="form-control" required value="<?=$data['tgl_transaksi'];?>"/>
+                        <input type="text" name="tgl_transaksi" id="tgl_transaksi" class="form-control" required value="<?=$data['tgl_transaksi'];?>"/>
                     </div>
                 </div>
 
@@ -110,12 +110,7 @@ if(isset($_POST['update'])){
                         <input type="text" name="metode_pembayaran" id="metode_pembayaran" class="form-control" value="<?=$data['metode_pembayaran'];?>" required/>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label for="harga_antar">Harga Pengantaran</label>
-                        <input type="text" name="harga_antar" id="harga_antar" class="form-control"required value="<?=$data['harga_antar'];?>"/>
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="total_harga">Total Bayar</label>
@@ -128,37 +123,22 @@ if(isset($_POST['update'])){
                         <label for="status">Payment Status</label>
                         <select name="status" id="status" class="custom-select">
                         <?php
-                        if ($data['status'] == "paid"): ?>
-                            <option selected value="paid">Paid</option>
-                            <option value="unpaid">Unpaid</option>
+                        if ($data['status'] == "sudah bayar"): ?>
+                            <option selected value="sudah bayar">sudah bayar</option>
+                            <option value="belum bayar">belum bayar</option>
                         <?php else: ?>
-                            <option selected value="unpaid">Unpaid</option>
-                            <option value="paid">Paid</option>
+                            <option selected value="belum bayar">belum bayar</option>
+                            <option value="sudah bayar">sudah bayar</option>
                         <?php endif    ?>                    
                         </select>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-4 form-group">
-                        <label for="produk_status">Delivery Status</label>
-                        <select name="produk_status" id="produk_status" class="custom-select" value="<?=$data['produk_status'];?>"">
-                            <?php
-                            if ($data['status'] == "selesai"): ?>
-                                <option selected value="selesai">Selesai</option>
-                                <option value="proses">Proses</option>
-                               
-                            <?php else: ?>
-                                <option selected value="proses">Proses</option>
-                                <option value="selesai">Selesai</option>
-                            <?php endif    ?>   
-                        </select>
-                    </div>
-                </div>
+                
 
                 <div class="row">
                     <div class="col-md-7 form-group">
-                    <img src="../foto-pembayaran/<?php echo $data['fbukti_pembayaran'];?>" width="150">
+                    <img src="../foto-pembayaran/<?php echo $data['bukti_pembayaran'];?>" width="150" alt="bukti bayar">
                     </div>
                 </div>
             </div>

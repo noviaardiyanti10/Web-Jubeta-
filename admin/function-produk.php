@@ -29,7 +29,7 @@ function tambahProduk(){
         $newfoto = $angka_acak.'-'.$foto;
         if (in_array($ekstensi_new, $ekstensi) === true){
             move_uploaded_file($file_tmp,'../foto-produk/'.$newfoto);
-            $query = "INSERT INTO produk (nama_produk, harga_produk, stok, merk, deskripsi, foto) VALUES ( '$nama_produk', '$harga_produk', '$stok', '$merk', '$deskripsi', '$newfoto')";
+            $query = "INSERT INTO produk (nama_produk, harga_produk, quantity, merk, deskripsi, foto) VALUES ( '$nama_produk', '$harga_produk', '$stok', '$merk', '$deskripsi', '$newfoto')";
             $result = mysqli_query($koneksi, $query);
             if(!$result){
                 die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
@@ -44,7 +44,7 @@ function tambahProduk(){
             }
 
         }else{
-            $query = "INSERT INTO produk ( nama_produk, harga_produk, stok, merk, deskripsi, foto) VALUES ( '$nama_produk', '$harga_produk', '$stok', '$merk', '$deskripsi', '$foto')";
+            $query = "INSERT INTO produk ( nama_produk, harga_produk, quantity, merk, deskripsi, foto) VALUES ( '$nama_produk', '$harga_produk', '$stok', '$merk', '$deskripsi', '$foto')";
             $result = mysqli_query($koneksi, $query);
             if(!$result){
                 die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
@@ -60,7 +60,7 @@ function tambahProduk(){
 
         }
     }else{
-        $query = "INSERT INTO produk ( nama_produk, harga_produk, stok, merk, deskripsi, foto) VALUES ( '$nama_produk', '$harga_produk', '$stok', '$merk', '$deskripsi', '$foto')";
+        $query = "INSERT INTO produk ( nama_produk, harga_produk, quantity, merk, deskripsi, foto) VALUES ( '$nama_produk', '$harga_produk', '$stok', '$merk', '$deskripsi', '$foto')";
         $result = mysqli_query($koneksi, $query);
         if(!$result){
             die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
@@ -76,7 +76,7 @@ function tambahProduk(){
     }
 }
 function cariProduk($kunci){
-    $query = "SELECT  nama_produk, merk, harga_produk, stok, deskripsi, foto FROM produk WHERE nama_produk LIKE '%$kunci%' OR merk LIKE '%$kunci%' OR harga_produk LIKE '%$kunci%' OR stok LIKE '%$kunci%' OR deskripsi LIKE '%$kunci%' OR foto LIKE '%$kunci%'";
+    $query = "SELECT  nama_produk, merk, harga_produk, quantity, deskripsi, foto FROM produk WHERE nama_produk LIKE '%$kunci%' OR merk LIKE '%$kunci%' OR harga_produk LIKE '%$kunci%' OR stok LIKE '%$kunci%' OR deskripsi LIKE '%$kunci%' OR foto LIKE '%$kunci%'";
     return query($query);
 }
 
@@ -99,7 +99,7 @@ function editProduk ($upProduk){
         $newfoto = $angka_acak.'-'.$foto;
         if (in_array($ekstensi_new, $ekstensi) === true){
             move_uploaded_file($file_tmp,'../foto-produk/'.$newfoto);
-            $query = "UPDATE produk SET  nama_produk = '$nama_produk', harga_produk = '$harga_produk', stok = '$stok', merk = '$merk', deskripsi = '$deskripsi', foto = '$newfoto' WHERE id_produk = '$id_produk'";
+            $query = "UPDATE produk SET  nama_produk = '$nama_produk', harga_produk = '$harga_produk', quantity = '$stok', merk = '$merk', deskripsi = '$deskripsi', foto = '$newfoto' WHERE id_produk = '$id_produk'";
             $result = mysqli_query($koneksi, $query);
             if(!$result){
                 die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
@@ -113,7 +113,7 @@ function editProduk ($upProduk){
                     ";
             }
         }else{
-            $query = "UPDATE produk SET  nama_produk = '$nama_produk', harga_produk = '$harga_produk', stok = '$stok', merk = '$merk', deskripsi = '$deskripsi', foto = '$newfoto' WHERE id_produk = '$id_produk'";
+            $query = "UPDATE produk SET  nama_produk = '$nama_produk', harga_produk = '$harga_produk',quantity = '$stok', merk = '$merk', deskripsi = '$deskripsi', foto = '$newfoto' WHERE id_produk = '$id_produk'";
             $result = mysqli_query($koneksi, $query);
             if(!$result){
                 die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
@@ -129,7 +129,7 @@ function editProduk ($upProduk){
             
         }
     }else{
-        $query = "UPDATE produk SET  nama_produk = '$nama_produk', harga_produk = '$harga_produk', stok = '$stok', merk = '$merk', deskripsi = '$deskripsi' WHERE id_produk = '$id_produk'";
+        $query = "UPDATE produk SET  nama_produk = '$nama_produk', harga_produk = '$harga_produk', quantity = '$stok', merk = '$merk', deskripsi = '$deskripsi' WHERE id_produk = '$id_produk'";
         $result = mysqli_query($koneksi, $query);
         if(!$result){
             die ("Query gagal dijalankan: ".mysqli_errno($koneksi).

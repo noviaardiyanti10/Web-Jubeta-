@@ -9,7 +9,7 @@ if($_SESSION){
     header("Location: ../login.php");
 }
 require 'function-1.php';
-$result= mysqli_query($koneksi, "SELECT us.nama, od.id_pesan, od.tgl_order, od.jam_order, od.jml_order, tr.tgl_transaksi, tr.metode_pembayaran, tr.harga_antar, tr.total_harga, tr.status, tr.produk_status, tr.bukti_pembayaran 
+$result= mysqli_query($koneksi, "SELECT us.nama, od.id_pesan, od.tgl_order, od.jam_order, od.quantity, tr.tgl_transaksi, tr.metode_pembayaran,tr.total_harga, tr.status,  tr.bukti_pembayaran 
                         FROM user_jubeta LEFT JOIN detail_user us ON id_user = us.id_pembeli
                         LEFT JOIN pesan od ON us.id_pembeli = od.id_user LEFT JOIN transaksi tr ON od.id_pesan = tr.id_pesan WHERE tingkatan_user = 'user'");
 if(isset($_POST["cari"])){
@@ -49,7 +49,7 @@ if(isset($_POST["cari"])){
           </div>
           
         </form>
-       <div class="card">
+       <div class="card table table-responsive">
         <table class="table table-striped table-fixed tableFixHead">
             <thead>
               <tr>
@@ -57,13 +57,11 @@ if(isset($_POST["cari"])){
                 <th scope="col">Order ID</th>
                 <th scope="col">Created</th>
                 <th scope="col">Jam Order</th>
-                <th scope="col">Item</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">Tanggal Transaksi</th>
                 <th scope="col">Metode Transaksi</th>
-                <th scope="col">Harga Antar</th>
                 <th scope="col">Total</th>
-                <th scope="col">Status</th>
-                <th scope="col">Delivery Status</th>
+                <th scope="col">Status Bayar</th>
                 <th scope="col">Bukti Transaksi</th>
                 <th scope="col">Other</th>
               </tr>
@@ -79,13 +77,11 @@ if(isset($_POST["cari"])){
                 <td><?php echo $order['id_pesan'];?></td>
                 <td><?php echo $order['tgl_order'];?></td>
                 <td><?php echo $order['jam_order'];?></td>
-                <td><?php echo $order['jml_order'];?></td>
+                <td><?php echo $order['quantity'];?></td>
                 <td><?php echo $order['tgl_transaksi'];?></td>
                 <td><?php echo $order['metode_pembayaran'];?></td>
-                <td><?php echo $order['harga_antar'];?></td>
                 <td><?php echo $order['total_harga'];?></td>
                 <td><?php echo $order['status'];?></td>
-                <td><?php echo $order['produk_status'];?></td>
                 <td><?php echo $order['bukti_pembayaran'];?></td>
               <td>
                 <button class="btn btn-light" type="submit"><a href="update-order.php?id_pesan=<?= $order["id_pesan"]; ?>" class="text-dark"><i class="fa fa-edit fa-md"></i></a></button>

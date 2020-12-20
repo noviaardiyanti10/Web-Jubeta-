@@ -72,7 +72,7 @@ if(isset($_POST["cari"])){
               <td><?php echo $row['nama_produk'];?></td>
               <td><?php echo $row['merk'];?></td>
               <td><?php echo $row['harga_produk'];?></td>
-              <td><?php echo $row['stok'];?></td>
+              <td><?php echo $row['quantity'];?></td>
               <td><?php echo $row['deskripsi'];?></td>
               <td><img src="../foto-produk/<?php echo $row['foto'];?>" width="130"></td>
                 

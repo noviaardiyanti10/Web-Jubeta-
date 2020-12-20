@@ -10,9 +10,9 @@ function query($query){
     return $rows;
 }
 function cariOrder($kunci){
-    $query = "SELECT us.nama, od.id_pesan, od.tgl_order, od.jam_order, od.jml_order, tr.tgl_transaksi, tr.metode_pembayaran, tr.harga_antar, tr.total_harga, tr.status, tr.produk_status, tr.bukti_pembayaran 
+    $query = "SELECT us.nama, od.id_pesan, od.tgl_order, od.jam_order, od.quantity, tr.tgl_transaksi, tr.metode_pembayaran,tr.total_harga, tr.status,  tr.bukti_pembayaran 
                 FROM user_jubeta LEFT JOIN detail_user us ON id_user = us.id_pembeli
-                LEFT JOIN pesan od ON us.id_pembeli = od.id_user LEFT JOIN transaksi tr ON od.id_pesan = tr.id_pesan WHERE us.nama LIKE '%$kunci' OR od.id_pesan LIKE '%$kunci' OR od.tgl_order LIKE '%$kunci' OR od.jam_order LIKE '%$kunci' OR od.jml_order LIKE '%$kunci' OR  tr.tgl_transaksi LIKE '%$kunci' OR tr.metode_pembayaran LIKE '%$kunci' OR tr.harga_antar LIKE '%$kunci' OR tr.total_harga LIKE '%$kunci' OR tr.status LIKE '%$kunci' OR tr.produk_status LIKE '%$kunci'";
+                LEFT JOIN pesan od ON us.id_pembeli = od.id_user LEFT JOIN transaksi tr ON od.id_pesan = tr.id_pesan WHERE us.nama LIKE '%$kunci' OR od.id_pesan LIKE '%$kunci' OR od.tgl_order LIKE '%$kunci' OR od.jam_order LIKE '%$kunci' OR od.quantity LIKE '%$kunci' OR  tr.tgl_transaksi LIKE '%$kunci' OR tr.metode_pembayaran LIKE '%$kunci'  OR tr.total_harga LIKE '%$kunci' OR tr.status LIKE '%$kunci'";
     return query($query);
 }
 function updateOrder($UpdateOrder){
@@ -21,8 +21,8 @@ function updateOrder($UpdateOrder){
     $tgl_transaksi = htmlspecialchars($UpdateOrder['tgl_transaksi']);
     $metode_pembayaran = htmlspecialchars($UpdateOrder['metode_pembayaran']);
     $status = htmlspecialchars($UpdateOrder['status']);
-    $produk_status = htmlspecialchars($UpdateOrder['produk_status']);
-    $query = "UPDATE transaksi SET tgl_transaksi = '$tgl_transaksi', metode_pembayaran = '$metode_pembayaran', status = '$status', produk_status = '$produk_status' WHERE id_pesan = '$id_pesan'";
+    //$produk_status = htmlspecialchars($UpdateOrder['produk_status']);
+    $query = "UPDATE transaksi SET tgl_transaksi = '$tgl_transaksi', metode_pembayaran = '$metode_pembayaran', status = '$status',  WHERE id_pesan = '$id_pesan'";
     $result = mysqli_query($koneksi, $query);
     if(!$result){
         die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
