@@ -82,7 +82,7 @@ if(isset($_POST["cari"])){
                 <td><?php echo $order['metode_pembayaran'];?></td>
                 <td><?php echo $order['total_harga'];?></td>
                 <td><?php echo $order['status'];?></td>
-                <td><?php echo $order['bukti_pembayaran'];?></td>
+                <td><img src="../foto-transfer/<?php echo $order['bukti_pembayaran'];?>" width="150" alt="bukti bayar"></td>
               <td>
                 <button class="btn btn-light" type="submit"><a href="update-order.php?id_pesan=<?= $order["id_pesan"]; ?>" class="text-dark"><i class="fa fa-edit fa-md"></i></a></button>
               </td>

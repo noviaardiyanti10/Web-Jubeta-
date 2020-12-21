@@ -1,0 +1,73 @@
+.data_diri {
+	width: 100%;
+	height: 280px;
+}
+
+.keranjang {
+	width: 100%;
+	height: 250px;
+}
+
+.data-diri {
+	width: 100%;
+	height: 180px;
+}
+
+.gambar-diri {
+	width: 100px;
+	height: 100px;
+}
+
+.data-diri p:hover {
+	color: #1cc88a;
+	cursor: pointer;
+}
+
+.ikon-samping {
+	width: 100%;
+	height: 45%;
+}
+
+.kolom {
+	height: 60px;
+
+}
+
+.kolom:hover {
+	background-color: #e3e6f0;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.sosmed {
+	width: 100%;
+	height: 100px;
+}
+
+.gambar-jual {
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+}
+
+.gambar-jual img {
+	border-top-left-radius: 1.35rem !important;
+	border-top-right-radius: 1.35rem !important;
+}
+
+/* .barang-jual {
+	width: 1050px;
+} */
+
+.box1 {
+	width: 800px;
+	height: 200px;
+}
+
+.box2 {
+	width: 800px;
+}
+
+.kotak-edit{
+	width: 80%;
+}

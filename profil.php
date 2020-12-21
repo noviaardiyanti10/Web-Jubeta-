@@ -9,8 +9,8 @@ if($_SESSION){
 }else{
     header("Location: login.php");
 }
-$result = mysqli_query($koneksi,"SELECT us.username, du.nama, du.email, du.alamat, du.no_telp, du.tempat_lahir, du.tgl_lahir, du.jenis_kelamin, du.foto_user FROM user_jubeta us LEFT JOIN detail_user du ON us.id_user = du.id_pembeli WHERE username = '$username';");
-$user = mysqli_fetch_assoc($result);
+$username = $_SESSION["username"];
+$result =query("SELECT us.username, du.nama, du.email, du.alamat, du.no_telp, du.tempat_lahir, du.tgl_lahir, du.jenis_kelamin, du.foto_user FROM user_jubeta us LEFT JOIN detail_user du ON us.id_user = du.id_pembeli WHERE username = '$username';")[0];
 
 if (isset($_POST['edit'])) {
     if (edit($_POST) > 0){
@@ -49,14 +49,14 @@ if (isset($_POST['edit'])) {
 
   <!--Layout-->
 <header>
-
+    <?php include 'header.php';?>
 </header>
 <!--Body-->
 <div class="container-fluid border-0 profil-admin rounded">
         <div class="row">
             <div class="col-md-3 p-0">
-                <div class="card shadow border-0">
-                    <img src="foto-user/<?php echo $user['foto_user'];?>" alt="foto profil" width="300" class="rounded img-fluid" id="fotouser">
+                <div class="card shadow border-0" id="bgprofil">
+                    <img src="foto-user/<?php echo $result['foto_user'];?>" alt="foto profil" width="300" class="rounded img-fluid" id="fotouser">
                 </div>
             </div>
             <div class="col-md-8 data-admin">
@@ -66,40 +66,40 @@ if (isset($_POST['edit'])) {
                         <div class="row">
                             <div class="col-md-5 form-group">
                                 <label for="username">Username</label>
-                                <input type="text" name="username" id="username" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?= $user['username']; ?> " readonly/>
+                                <input type="text" name="username" id="username" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?=  $result['username']; ?> " readonly/>
                             </div>
           
                             <div class="col-md-5 form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" name="nama" id="nama" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?= $user['nama']; ?> "/>
+                                <input type="text" name="nama" id="nama" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?=  $result['nama']; ?> "/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-5 form-group">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" id="email" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?= $user['email']; ?> "/>
+                                <input type="text" name="email" id="email" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?=  $result['email']; ?> "/>
                             </div>
                        
                             <div class="col-md-5 form-group">
                                 <label for="alamat">Alamat</label>
-                                <input type="text" name="alamat" id="alamat" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?= $user['alamat']; ?> "/>
+                                <input type="text" name="alamat" id="alamat" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?=  $result['alamat']; ?> "/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-5 form-group">
                                 <label for="no_telp">Nomor Telepon</label>
-                                <input type="text" name="no_telp" id="no_telp" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?= $user['no_telp']; ?> "/>
+                                <input type="text" name="no_telp" id="no_telp" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?=  $result['no_telp']; ?> "/>
                             </div>
                        
                             <div class="col-md-5 form-group">
                                 <label for="tempat_lahir">Tempat Lahir</label>
-                                <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?= $user['tempat_lahir']; ?> "/>
+                                <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?=  $result['tempat_lahir']; ?> "/>
                             </div>
                         </div>
                         <div class="row">
                         <div class="col-md-5 form-group">
                                 <label for="tgl_lahir">Tanggal Lahir</label>
-                                <input type="text" name="tgl_lahir" id="tempat_lahir" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?= $user['tgl_lahir']; ?> "/>
+                                <input type="text" name="tgl_lahir" id="tempat_lahir" class="form-control w-250 border-0 border-bottom-1 shadow-none bg-input" value="<?=  $result['tgl_lahir']; ?> "/>
                             </div>
                         
                         <div class="col-md-5 form-group">

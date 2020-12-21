@@ -1,7 +1,15 @@
 <?php
 
 include 'koneksi.php';
-
+function query($query){
+    global $koneksi;
+    $result = mysqli_query($koneksi, $query);
+    $rows = [];
+    while($row = mysqli_fetch_assoc($result)){
+        $rows [] = $row;
+    }
+    return $rows;
+}
 function registrasi_user($data){
     global $koneksi;
     $nama= htmlspecialchars( $data['nama']);
@@ -37,8 +45,8 @@ function registrasi_user($data){
         $x = explode('.', $foto_ktp);
         $type_baru = strtolower(end($h));
         $type_ktp = strtolower(end($x));
-        $file_cache = $_FILES['ktp_selfie']['name'];
-        $file_ktp = $_FILES['foto_ktp']['name'];
+        $file_cache = $_FILES['ktp_selfie']['tmp_name'];
+        $file_ktp = $_FILES['foto_ktp']['tmp_name'];
         $angka_acak = rand(1,999);
         $new_ktp_selfi= $angka_acak.'-'.$ktp_selfie;
         $ktp_baru = $angka_acak.'-'.$foto_ktp;
@@ -82,40 +90,53 @@ function registrasi_user($data){
     }
 
 return mysqli_affected_rows($koneksi);
-}
-
-function edit($user){
-global $koneksi;
-$username = htmlspecialchars($user['username']);
-$nama = htmlspecialchars($user['nama']);
-$email = htmlspecialchars($user['email']);
-$alamat = htmlspecialchars($user['alamat']);
-$no_telp = htmlspecialchars($user['no_telp']);
-$tempat_lahir = htmlspecialchars($user['tempat_lahir']);
-$tgl_lahir = htmlspecialchars($user['tgl_lahir']);
-$foto_user = $_FILES['foto_user']['name'];
-if ($foto_user != ""){
-    $jenis_file = array ('jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG');
-    $h = explode('.', $foto_user);
-    $type_baru = strtolower(end($h));
-    $file_cache = $_FILES['foto_user']['tmp_name'];
-    $angka_acak = rand(1,999);
-    $newfoto= $angka_acak.'-'.$foto_user;
-
-    if (in_array($type_baru, $jenis_file) === true){
-        move_uploaded_file($file_cache,'foto-user/'.$newfoto);
-        $query = "UPDATE user_jubeta us LEFT JOIN detail_user du ON us.id_user = du.id_pembeli SET nama = '$nama', email = '$email', alamat = '$alamat', no_telp = '$no_telp', tempat_lahir = '$tempat_lahir', tgl_lahir = '$tgl_lahir', foto_user = '$newfoto' WHERE username = '$username'";
-        $result = mysqli_query($koneksi, $query);
-        if(!$result){
-            die ("Query gagal dijalankan: ".mysqli_errno($koneksi));
+}function edit($user){
+    global $koneksi;
+    $username = htmlspecialchars($user['username']);
+    $nama = htmlspecialchars($user['nama']);
+    $email = htmlspecialchars($user['email']);
+    $alamat = htmlspecialchars($user['alamat']);
+    $no_telp = htmlspecialchars($user['no_telp']);
+    $tempat_lahir = htmlspecialchars($user['tempat_lahir']);
+    $tgl_lahir = htmlspecialchars($user['tgl_lahir']);
+    $foto_user = $_FILES['foto_user']['name'];
+    if ($foto_user != ""){
+        $jenis_file = array ('jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG');
+        $h = explode('.', $foto_user);
+        $type_baru = strtolower(end($h));
+        $file_cache = $_FILES['foto_user']['tmp_name'];
+        $angka_acak = rand(1,999);
+        $newfoto= $angka_acak.'-'.$foto_user;
+    
+        if (in_array($type_baru, $jenis_file) === true){
+            move_uploaded_file($file_cache,'foto-user/'.$newfoto);
+            $query = "UPDATE user_jubeta us LEFT JOIN detail_user du ON us.id_user = du.id_pembeli SET nama = '$nama', email = '$email', alamat = '$alamat', no_telp = '$no_telp', tempat_lahir = '$tempat_lahir', tgl_lahir = '$tgl_lahir', foto_user = '$newfoto' WHERE username = '$username'";
+            $result = mysqli_query($koneksi, $query);
+            if(!$result){
+                die ("Query gagal dijalankan: ".mysqli_errno($koneksi));
+            }
+        }else{
+            $query = "UPDATE user_jubeta us LEFT JOIN detail_user du ON us.id_user = du.id_pembeli SET nama = '$nama', email = '$email', alamat = '$alamat', no_telp = '$no_telp', tempat_lahir = '$tempat_lahir', tgl_lahir = '$tgl_lahir', foto_user = '$newfoto' WHERE username = '$username'";
+            $result = mysqli_query($koneksi, $query);
+            if(!$result){
+                die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
+                    " - ".mysqli_error($koneksi));
+            }else{
+                echo "
+                    <script>
+                        alert('data berhasil diubah!');
+                        document.location.href = 'home.php';
+                    </script>
+                    ";
+            }
         }
     }else{
-        $query = "UPDATE user_jubeta us LEFT JOIN detail_user du ON us.id_user = du.id_pembeli SET nama = '$nama', email = '$email', alamat = '$alamat', no_telp = '$no_telp', tempat_lahir = '$tempat_lahir', tgl_lahir = '$tgl_lahir', foto_user = '$newfoto' WHERE username = '$username'";
+        $query = "UPDATE user_jubeta us LEFT JOIN detail_user du ON us.id_user = du.id_pembeli SET  nama = '$nama', email = '$email', alamat = '$alamat', no_telp = '$no_telp', tempat_lahir = '$tempat_lahir', tgl_lahir = '$tgl_lahir', foto_user = '$foto_user' WHERE username = '$username'";
         $result = mysqli_query($koneksi, $query);
         if(!$result){
             die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
                 " - ".mysqli_error($koneksi));
-        }else{
+        } else{
             echo "
                 <script>
                     alert('data berhasil diubah!');
@@ -124,21 +145,6 @@ if ($foto_user != ""){
                 ";
         }
     }
-}else{
-    $query = "UPDATE user_jubeta us LEFT JOIN detail_user du ON us.id_user = du.id_pembeli SET  nama = '$nama', email = '$email', alamat = '$alamat', no_telp = '$no_telp', tempat_lahir = '$tempat_lahir', tgl_lahir = '$tgl_lahir', foto_user = '$foto_user' WHERE username = '$username'";
-    $result = mysqli_query($koneksi, $query);
-    if(!$result){
-        die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-            " - ".mysqli_error($koneksi));
-    } else{
-        echo "
-            <script>
-                alert('data berhasil diubah!');
-                document.location.href = 'home.php';
-            </script>
-            ";
+    
+        return mysqli_affected_rows($koneksi);
     }
-}
-
-    return mysqli_affected_rows($koneksi);
-}

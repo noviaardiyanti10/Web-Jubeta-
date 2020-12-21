@@ -107,7 +107,7 @@ if(isset($_POST['update'])){
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="metode_pembayaran">Metode Pembayaran</label>
-                        <input type="text" name="metode_pembayaran" id="metode_pembayaran" class="form-control" value="<?=$data['metode_pembayaran'];?>" required/>
+                        <input type="text" name="metode_pembayaran" id="metode_pembayaran" class="form-control" value="<?=$data['metode_pembayaran'];?>" readonly/>
                     </div>
                 </div>
                 
@@ -138,7 +138,7 @@ if(isset($_POST['update'])){
 
                 <div class="row">
                     <div class="col-md-7 form-group">
-                    <img src="../foto-pembayaran/<?php echo $data['bukti_pembayaran'];?>" width="150" alt="bukti bayar">
+                    <img src="../foto-transfer/<?php echo $data['bukti_pembayaran'];?>" width="150" alt="bukti bayar">
                     </div>
                 </div>
             </div>

@@ -53,7 +53,6 @@ if(isset($_POST["cari"])){
           <tr>
             <th>ID Admin</th>
             <th>Username Admin</th>
-            <th>Password</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -66,7 +65,7 @@ if(isset($_POST["cari"])){
            <tr>
               <td><?php echo $row['id_user'];?></td>
               <td><?php echo $row['username'];?></td>
-              <td><?php echo md5($row['passwd']);?></td>
+             
                   
             <td><button class="btn btn-dark" type="submit"><a href="hapus-admin.php?id_user=<?= $row["id_user"]; ?>" class="text-white"><i class="fa fa-trash fa-md"></i></button>
                   <button class="btn btn-dark" type="submit"><a href="update-admin.php?id_user=<?= $row["id_user"]; ?>" class="text-white"><i class="fa fa-edit fa-md"></i></a></button>

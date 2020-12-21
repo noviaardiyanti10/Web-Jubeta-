@@ -72,12 +72,7 @@ if (isset($_POST['update-admin'])) {
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-4 form-group ml-5">
-                    <label for="passwd">Password</label>
-                    <input type="password" name="passwd" id="passwd" class="form-control" required value="<?=$data['passwd'];?>"> 
-                </div>
-            </div>
+            
 
             <button class="btn btn-primary w-40 mb-4" id="ProdukButton" type="submit" name="update-admin">Update</button>
          

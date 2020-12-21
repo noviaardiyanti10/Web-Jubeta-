@@ -21,8 +21,7 @@ function updateOrder($UpdateOrder){
     $tgl_transaksi = htmlspecialchars($UpdateOrder['tgl_transaksi']);
     $metode_pembayaran = htmlspecialchars($UpdateOrder['metode_pembayaran']);
     $status = htmlspecialchars($UpdateOrder['status']);
-    //$produk_status = htmlspecialchars($UpdateOrder['produk_status']);
-    $query = "UPDATE transaksi SET tgl_transaksi = '$tgl_transaksi', metode_pembayaran = '$metode_pembayaran', status = '$status',  WHERE id_pesan = '$id_pesan'";
+    $query = "UPDATE transaksi SET tgl_transaksi = '$tgl_transaksi', metode_pembayaran = '$metode_pembayaran', status = '$status'  WHERE id_pesan = '$id_pesan'";
     $result = mysqli_query($koneksi, $query);
     if(!$result){
         die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
@@ -42,8 +41,7 @@ function editAdmin($admin){
     global $koneksi;
     $id_user = htmlspecialchars ($admin['id_user']);
     $username = htmlspecialchars($admin['username']);
-    $passwd = mysqli_escape_string($koneksi, $admin['passwd']);
-    $query = "UPDATE user_jubeta SET username = '$username', passwd = '$passwd' WHERE id_user = '$id_user'";
+    $query = "UPDATE user_jubeta SET username = '$username' WHERE id_user = '$id_user'";
     $result = mysqli_query($koneksi, $query);
     if(!$result){
         die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
